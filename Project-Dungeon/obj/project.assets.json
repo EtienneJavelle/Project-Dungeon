@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\death\\.nuget\\packages\\": {}
+    "C:\\Users\\Louis\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\death\\Documents\\Project-Dungeon\\Project-Dungeon\\Project-Dungeon.csproj",
+      "projectUniqueName": "D:\\Pole IIID\\Cours_par_année\\3eme année\\Algorithmique\\Projet Groupe - Dongon\\Github\\Project-Dungeon\\Project-Dungeon.csproj",
       "projectName": "Project-Dungeon",
-      "projectPath": "D:\\Users\\death\\Documents\\Project-Dungeon\\Project-Dungeon\\Project-Dungeon.csproj",
-      "packagesPath": "C:\\Users\\death\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\death\\Documents\\Project-Dungeon\\Project-Dungeon\\obj\\",
+      "projectPath": "D:\\Pole IIID\\Cours_par_année\\3eme année\\Algorithmique\\Projet Groupe - Dongon\\Github\\Project-Dungeon\\Project-Dungeon.csproj",
+      "packagesPath": "C:\\Users\\Louis\\.nuget\\packages\\",
+      "outputPath": "D:\\Pole IIID\\Cours_par_année\\3eme année\\Algorithmique\\Projet Groupe - Dongon\\Github\\Project-Dungeon\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\death\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Louis\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -32,6 +32,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -43,6 +44,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -58,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
