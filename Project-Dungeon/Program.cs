@@ -6,32 +6,50 @@ namespace Project_Dungeon
     {
         static void Main(string[] args)
         {
-            char[,] Level1 = new char[5, 5]
+            #region Maps
+            DungeonFloor[] DungeonFloors = new DungeonFloor[]
             {
-                {'-','M','I','-','B' },
-                {'-','I','-','M','-' },
-                {'S','M','B','M','I' },
-                {'I','-','M','E','M' },
-                {'I','-','M','-','B' }
+                new DungeonFloor(new char[,]
+                {
+                    {'-','M','I','-','B' },
+                    {'-','I','-','M','-' },
+                    {'S','M','B','M','I' },
+                    {'I','-','M','E','M' },
+                    {'I','-','M','-','B' }
+                }),
+                new DungeonFloor(new char[,]
+                {
+                    {'-','-','-','-','-' },
+                    {'-','-','-','-','-' },
+                    {'-','-','-','-','-' },
+                    {'-','-','-','-','-' },
+                    {'-','-','-','-','-' }
+                })
             };
+            #endregion
 
-            int[,]playerPos = new int[1, 2] { { 2, 0 } };
+            int[] playerPos = new int[2] { 2, 0 };
 
-            Dungeon dungeon = new Dungeon(Level1);
+            Dungeon dungeon = new Dungeon(DungeonFloors);
 
-            string input;
+            ConsoleKeyInfo input;
             do
             {
-                dungeon.DungeonMap[playerPos[0, 0], playerPos[0, 1]] = 'P';
-                Console.Write(dungeon);
-                input = Console.ReadLine().ToLower();
-                if(input == "d") playerPos[0,1]++;
-                if(input == "a") playerPos[0,1]--;
-                if(input == "s") playerPos[0,0]++;
-                if(input == "w") playerPos[0,0]--;
+                dungeon.DrawMap(playerPos[0], playerPos[1]);
+                Console.WriteLine("Floor " + dungeon.Floor);
+                input = Console.ReadKey();
+                if (input.Key == ConsoleKey.D || input.Key == ConsoleKey.RightArrow) playerPos[1]++;
+                else if (input.Key == ConsoleKey.A || input.Key == ConsoleKey.LeftArrow) playerPos[1]--;
+                else if (input.Key == ConsoleKey.S || input.Key == ConsoleKey.DownArrow) playerPos[0]++;
+                else if (input.Key == ConsoleKey.W || input.Key == ConsoleKey.UpArrow) playerPos[0]--;
+                else if (input.Key == ConsoleKey.E) dungeon.Floor++;
+                else if (input.Key == ConsoleKey.Q) dungeon.Floor--;
+                playerPos[0] = Math.Clamp(playerPos[0], 0, 4);
+                playerPos[1] = Math.Clamp(playerPos[1], 0, 4);
+                dungeon.Floor = Math.Clamp(dungeon.Floor, 0, 1);
 
                 Console.Clear();
-            } while (input != "quit");
+            } while (input.Key != ConsoleKey.Escape);
         }
     }
 }

@@ -4,23 +4,41 @@ using System.Text;
 
 namespace Project_Dungeon
 {
-    class Dungeon
+    class DungeonFloor
     {
         #region Variables
-        public char[,] DungeonMap = new char[5, 5]
-            {
-                {'-','M','I','-','B' },
-                {'-','I','-','M','-' },
-                {'S','M','B','M','I' },
-                {'I','-','M','E','M' },
-                {'I','-','M','-','B' }
-            };
+        public char[,] Map { get; private set; }
+        public char[,] ResetMap { get; private set; }
         #endregion
 
         #region Construct
-        public Dungeon(char[,] dungeonMap)
+        public DungeonFloor(char[,] Map)
         {
-            DungeonMap = dungeonMap;
+            this.Map = Map;
+            this.ResetMap = (char[,])Map.Clone();
+        }
+        #endregion
+
+        #region Overrides
+        #endregion
+
+        #region Methods
+        #endregion
+
+        #region Fields
+        #endregion
+    }
+    class Dungeon
+    {
+        #region Variables
+        public DungeonFloor[] DungeonMaps { get; private set; }
+        #endregion
+
+        #region Construct
+        public Dungeon(DungeonFloor[] DungeonMaps, int Floor = 0)
+        {
+            this.DungeonMaps = DungeonMaps;
+            this.Floor = Floor;
         }
         #endregion
 
@@ -28,22 +46,43 @@ namespace Project_Dungeon
         public override string ToString()
         {
             string tmp = "";
-            for (int x = 0; x < DungeonMap.GetLength(0); x++)
+            for (int x = 0; x < this.DungeonMaps[Floor].Map.GetLength(0); x++)
             {
-                for (int y = 0; y < DungeonMap.GetLength(1); y++)
+                for (int y = 0; y < this.DungeonMaps[Floor].Map.GetLength(1); y++)
                 {
-                    tmp += DungeonMap[x, y];
+                    tmp += this.DungeonMaps[Floor].Map[x, y];
                 }
                 tmp += "\n";
             }
             return tmp;
         }
         #endregion
-        
+
         #region Methods
+        public void DrawMap(int x, int y)
+        {
+            this.ResetMap();
+            this.DungeonMaps[Floor].Map[x, y] = 'P';
+            string[] map = this.ToString().Split('P');
+            Console.Write(map[0]);
+            Console.Write("P", Console.ForegroundColor = ConsoleColor.Black, Console.BackgroundColor = ConsoleColor.White);
+            Console.ResetColor();
+            Console.Write(map[1]);
+        }
+        void ResetMap()
+        {
+            for (int x = 0; x < this.DungeonMaps[Floor].Map.GetLength(0); x++)
+            {
+                for (int y = 0; y < this.DungeonMaps[Floor].Map.GetLength(1); y++)
+                {
+                    this.DungeonMaps[Floor].Map[x, y] = this.DungeonMaps[Floor].ResetMap[x, y];
+                }
+            }
+        }
         #endregion
 
         #region Fields
+        public int Floor;
         #endregion
     }
 }
