@@ -1,0 +1,13 @@
+D:\Users\death\Documents\Project-Dungeon\Project-Dungeon\bin\Debug\netcoreapp3.1\Project-Dungeon.exe
+D:\Users\death\Documents\Project-Dungeon\Project-Dungeon\bin\Debug\netcoreapp3.1\Project-Dungeon.deps.json
+D:\Users\death\Documents\Project-Dungeon\Project-Dungeon\bin\Debug\netcoreapp3.1\Project-Dungeon.runtimeconfig.json
+D:\Users\death\Documents\Project-Dungeon\Project-Dungeon\bin\Debug\netcoreapp3.1\Project-Dungeon.runtimeconfig.dev.json
+D:\Users\death\Documents\Project-Dungeon\Project-Dungeon\bin\Debug\netcoreapp3.1\Project-Dungeon.dll
+D:\Users\death\Documents\Project-Dungeon\Project-Dungeon\bin\Debug\netcoreapp3.1\Project-Dungeon.pdb
+D:\Users\death\Documents\Project-Dungeon\Project-Dungeon\obj\Debug\netcoreapp3.1\Project-Dungeon.csprojAssemblyReference.cache
+D:\Users\death\Documents\Project-Dungeon\Project-Dungeon\obj\Debug\netcoreapp3.1\Project-Dungeon.AssemblyInfoInputs.cache
+D:\Users\death\Documents\Project-Dungeon\Project-Dungeon\obj\Debug\netcoreapp3.1\Project-Dungeon.AssemblyInfo.cs
+D:\Users\death\Documents\Project-Dungeon\Project-Dungeon\obj\Debug\netcoreapp3.1\Project-Dungeon.csproj.CoreCompileInputs.cache
+D:\Users\death\Documents\Project-Dungeon\Project-Dungeon\obj\Debug\netcoreapp3.1\Project-Dungeon.dll
+D:\Users\death\Documents\Project-Dungeon\Project-Dungeon\obj\Debug\netcoreapp3.1\Project-Dungeon.pdb
+D:\Users\death\Documents\Project-Dungeon\Project-Dungeon\obj\Debug\netcoreapp3.1\Project-Dungeon.genruntimeconfig.cache
