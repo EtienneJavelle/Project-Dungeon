@@ -33,23 +33,32 @@ namespace Project_Dungeon
             Dungeon dungeon = new Dungeon(DungeonFloors);
 
             ConsoleKeyInfo input;
+
             do
             {
+                Console.Clear();
                 dungeon.DrawMap(playerPos[0], playerPos[1]);
                 Console.WriteLine("Floor " + dungeon.Floor);
-                input = Console.ReadKey();
-                if (input.Key == ConsoleKey.D || input.Key == ConsoleKey.RightArrow) playerPos[1]++;
-                else if (input.Key == ConsoleKey.A || input.Key == ConsoleKey.LeftArrow) playerPos[1]--;
-                else if (input.Key == ConsoleKey.S || input.Key == ConsoleKey.DownArrow) playerPos[0]++;
-                else if (input.Key == ConsoleKey.W || input.Key == ConsoleKey.UpArrow) playerPos[0]--;
-                else if (input.Key == ConsoleKey.E) dungeon.Floor++;
-                else if (input.Key == ConsoleKey.Q) dungeon.Floor--;
-                playerPos[0] = Math.Clamp(playerPos[0], 0, 4);
-                playerPos[1] = Math.Clamp(playerPos[1], 0, 4);
-                dungeon.Floor = Math.Clamp(dungeon.Floor, 0, 1);
 
-                Console.Clear();
+                input = Inputs(playerPos, dungeon);
+
             } while (input.Key != ConsoleKey.Escape);
+        }
+
+        private static ConsoleKeyInfo Inputs(int[] playerPos, Dungeon dungeon)
+        {
+            ConsoleKeyInfo input = Console.ReadKey();
+            if (input.Key == ConsoleKey.D || input.Key == ConsoleKey.RightArrow) playerPos[1]++;
+            else if (input.Key == ConsoleKey.A || input.Key == ConsoleKey.LeftArrow) playerPos[1]--;
+            else if (input.Key == ConsoleKey.S || input.Key == ConsoleKey.DownArrow) playerPos[0]++;
+            else if (input.Key == ConsoleKey.W || input.Key == ConsoleKey.UpArrow) playerPos[0]--;
+            else if (input.Key == ConsoleKey.E) dungeon.Floor++;
+            else if (input.Key == ConsoleKey.Q) dungeon.Floor--;
+
+            playerPos[0] = Math.Clamp(playerPos[0], 0, 4);
+            playerPos[1] = Math.Clamp(playerPos[1], 0, 4);
+            dungeon.Floor = Math.Clamp(dungeon.Floor, 0, 1);
+            return input;
         }
     }
 }

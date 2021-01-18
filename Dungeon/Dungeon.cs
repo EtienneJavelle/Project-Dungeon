@@ -18,16 +18,8 @@ namespace Project_Dungeon
             this.ResetMap = (char[,])Map.Clone();
         }
         #endregion
-
-        #region Overrides
-        #endregion
-
-        #region Methods
-        #endregion
-
-        #region Fields
-        #endregion
     }
+
     class Dungeon
     {
         #region Variables
