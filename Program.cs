@@ -29,6 +29,7 @@ namespace Project_Dungeon
             #endregion
 
             int[] playerPos = new int[2] { 2, 0 };
+            int[] lastPlayerPos = new int[2] { 2, 0 };
 
             Dungeon dungeon = new Dungeon(DungeonFloors);
 
@@ -59,6 +60,13 @@ namespace Project_Dungeon
             playerPos[1] = Math.Clamp(playerPos[1], 0, 4);
             dungeon.Floor = Math.Clamp(dungeon.Floor, 0, 1);
             return input;
+        }
+
+        static void Move(int[] playerPos, int x, int y, int[] lastPlayerPos)
+        {
+            lastPlayerPos = playerPos;
+            playerPos[0] += x;
+            playerPos[1] += y;
         }
     }
 }
