@@ -8,11 +8,11 @@ namespace Project_Dungeon
     {
         #region Variables
 
-        public int Vie { get; }
-        public int Force { get; }
-        public int Armure { get; }
-        public int Arme { get; }
-        public List<Item> Inventaire { get; set; }
+        public int HealthPoint { get; protected set; }
+        public int Strength { get; protected set; }
+        public int Armor { get; }
+        public int Weapon { get; }
+        public List<Item> Inventory { get; set; }
         
 
         #endregion
@@ -20,11 +20,11 @@ namespace Project_Dungeon
         #region Construct
         public Character (int Vie, int Force)
         {
-            this.Vie = Vie;
-            this.Force = Force;
-            this.Armure = 0;
-            this.Arme = 0;
-            this.Inventaire = new List<Item>;
+            this.HealthPoint = Vie;
+            this.Strength = Force;
+            this.Armor = 0;
+            this.Weapon = 0;
+            this.Inventory = new List<Item>();
             
         }
 
@@ -38,11 +38,11 @@ namespace Project_Dungeon
 
         public void AjouterItem(Item item)
         {
-            this.Inventaire.Add(item);
+            this.Inventory.Add(item);
         }
         public void SupprimerItem(Item item)
         {
-            this.Inventaire.Remove(item);
+            this.Inventory.Remove(item);
         }
         
         public void Attaquer()
