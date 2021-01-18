@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace P_Dungeon
+namespace Project_Dungeon
 {
-    class Joueur: Personnage
+    class Player: Character
     {
         public int Or { get; set; }
         public int EXP { get; set; }
         public int LVL { get; set; }
 
-        public Joueur(string nom) : base(nom)
+        public int x;
+        public int y;
+
+        public Player(string nom) : base(nom)
         {
             this.EXP = 0;
+            this.LVL = 1;
         }
 
-        public void LevelUP()
-        {
-            this.LVL++;
-        }
+       
 
     }
 }

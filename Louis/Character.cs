@@ -2,13 +2,23 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace P_Dungeon
+namespace Project_Dungeon
 {
-    class Personnage
+    class Character
     {
         #region Variables
 
-        public Personnage (int Vie, int Force)
+        public int Vie { get; }
+        public int Force { get; }
+        public int Armure { get; }
+        public int Arme { get; }
+        public List<Item> Inventaire { get; set; }
+        
+
+        #endregion
+
+        #region Construct
+        public Character (int Vie, int Force)
         {
             this.Vie = Vie;
             this.Force = Force;
@@ -18,19 +28,6 @@ namespace P_Dungeon
             
         }
 
-        int x;
-        int y;
-
-        #endregion
-
-        #region Construct
-
-        public int Vie { get; }
-        public int Force { get; }
-        public int Armure { get; }
-        public int Arme { get; }
-        public List<Item> Inventaire { get; set; }
-        
 
         #endregion
 
