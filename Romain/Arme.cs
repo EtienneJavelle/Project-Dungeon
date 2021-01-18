@@ -29,9 +29,9 @@ namespace Project_Dungeon
             return base.ToString() + "equipement obtenue  :" + this.Name;
         }
 
-        public override void effet(Personnage personnage)
+        public override void effet(Character character)
         {
-            personnage.arme= this.Bonus;
+            character.arme= this.Bonus;
             
         }
 

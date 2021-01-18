@@ -19,7 +19,7 @@ namespace Project_Dungeon
         }
         #endregion
     }
-
+    
     class Dungeon
     {
         #region Variables
@@ -51,10 +51,10 @@ namespace Project_Dungeon
         #endregion
 
         #region Methods
-        public void DrawMap(int x, int y)
+        public void DrawMap(Vector2 pos)
         {
             this.ResetMap();
-            this.DungeonMaps[Floor].Map[x, y] = 'P';
+            this.DungeonMaps[Floor].Map[pos.x, pos.y] = 'P';
             string[] map = this.ToString().Split('P');
             Console.Write(map[0]);
             Console.Write("P", Console.ForegroundColor = ConsoleColor.Black, Console.BackgroundColor = ConsoleColor.White);

@@ -24,7 +24,7 @@ namespace Project_Dungeon
             this.Force = Force;
             this.Armure = 0;
             this.Arme = 0;
-            this.Inventaire = new List<Item>;
+            this.Inventaire = new List<Item>();
             
         }
 
