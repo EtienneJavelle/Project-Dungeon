@@ -16,13 +16,12 @@ namespace Project_Dungeon
             Console.Clear();
             this.player = player;
             this.enemy = enemy;
-            this.runninng = true;
+            this.ExpToWin = enemy.exp;
             do {
                 Console.WriteLine(this.player);
-                Console.WriteLine();
                 Console.WriteLine(this.enemy);
-                this.runninng = this.Turn();
-            } while (this.runninng);
+                Console.WriteLine();
+            } while (this.Turn());
         }
         #endregion
 
@@ -32,31 +31,26 @@ namespace Project_Dungeon
         {
             if (this.player.Dead)
             {
-                this.runninng = false;
                 this.Won = false;
                 return false;
             }
-            else
+            else if (!PlayerTrun()) return false;
+
+            if (this.enemy.Dead)
             {
-                Console.WriteLine("Votre tour");
-                PlayerTrun();
-            }
-            if (this.enemy.Dead || !runninng)
-            {
-                this.runninng = false;
                 this.Won = true;
+                this.player.GainExp(this.ExpToWin);
                 return false;
             }
-            else
-            {
-                Console.WriteLine("EnemyTour");
-                EnemyTurn();
-            }
+            else EnemyTurn();
+
             return true;
         }
 
-        public void PlayerTrun()
+        public bool PlayerTrun()
         {
+            Console.WriteLine("Votre tour");
+
             var rand = new Random();
 
             Console.WriteLine("1 : Attaquer 2: Fuir");
@@ -67,19 +61,24 @@ namespace Project_Dungeon
                 switch (Console.ReadKey().Key)
                 {
                     case ConsoleKey.D1:
-                        Console.WriteLine("uuu");
                         tmp = rand.Next(1, 10);
                         this.enemy.LooseHealth((this.player.Strength - this.enemy.Armor) * tmp);
-                        return;
+                        return true;
                     case ConsoleKey.D2:
                         tmp = rand.Next(0, 2);
                         if (tmp == 1)
                         {
                             player.Run();
-                            runninng = false;
+                            this.Won = true;
+                            Console.ReadKey();
+                            return false;
                         }
-                        else Console.WriteLine("Fuite ratee");
-                        return;
+                        else
+                        {
+                            Console.WriteLine("Fuite ratee");
+                            Console.ReadKey();
+                            return true;
+                        }
                     default:
                         break;
                 }
@@ -106,6 +105,8 @@ namespace Project_Dungeon
 
         public void EnemyTurn()
         {
+            Console.WriteLine("EnemyTour");
+
             var rand = new Random();
             int tmp = rand.Next(1, 10);
             this.player.LooseHealth((this.enemy.Strength - this.player.Armor) * tmp);
@@ -130,7 +131,7 @@ namespace Project_Dungeon
         #region Fields
         Player player;
         Enemy enemy;
-        bool runninng;
+        int ExpToWin;
         #endregion
     }
 }
