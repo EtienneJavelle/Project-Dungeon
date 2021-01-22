@@ -4,26 +4,20 @@ using System.Text;
 
 namespace Project_Dungeon
 {
-    abstract class Item
+    class Action
     {
-
         #region Variables
 
         public string Name { get; set; }
-        public int Amount { get; set; }
 
-        public bool isEquipment { get; set; }
         #endregion
 
 
         #region Construct
 
-        public Item(string name, int amount)
+        public Action(string name)
         {
             this.Name = name;
-            this.Amount = amount;
-            Console.WriteLine(this.Name + " obtenu.");
-            Console.ReadKey();
         }
 
         #endregion
@@ -39,12 +33,12 @@ namespace Project_Dungeon
 
 
 
-        public virtual void effet(Player player)
+        public virtual void effet()
         {
-            Console.WriteLine(this.Name + " a été utilisé.");
-            Console.ReadKey();
+
         }
 
         #endregion
     }
+}
 }

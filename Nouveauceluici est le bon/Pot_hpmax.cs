@@ -10,6 +10,7 @@ namespace Project_Dungeon
         #region Constructor
         public Pot_hpmax(string name, int amount) : base(name, amount)
         {
+            this.isEquipment = false;
         }
         #endregion
 

@@ -9,7 +9,11 @@ namespace Project_Dungeon
         {
             "Pot_str",
             "Pot_hp",
-            "Pot_hpmax"
+            "Pot_hpmax",
+            "Gold",
+            "Armor",
+            "ArmureLegend",
+            "Arme"
         };
         #endregion
         static void Main(string[] args)
@@ -37,7 +41,7 @@ namespace Project_Dungeon
             #endregion
 
 
-            Player player = new Player(15, 7)
+            Player player = new Player(150, 70)
             {
                 Position = new Vector2Int(2, 0)
             };
@@ -45,7 +49,8 @@ namespace Project_Dungeon
 
             ConsoleKeyInfo input;
 
-            do{
+            do
+            {
                 Console.Clear();
                 Console.WriteLine(player);
                 Console.WriteLine("Etage " + dungeon.Floor);
@@ -89,22 +94,35 @@ namespace Project_Dungeon
             switch (pos)
             {
                 case 'M':
-                    if (new Fight(player, new Enemy(new Random().Next(1, 15), new Random().Next(1, 5))))
+                    if (new Fight(player, new Enemy(new Random().Next(70, 120), new Random().Next(20, 40))))
                         dungeon.KillMonster(player.Position);
                     else GameLost();
                     break;
                 case 'I':
-                    switch (new Random().Next(0,Items.Length))
+                    switch (new Random().Next(0, Items.Length))
                     {
                         case 0:
-                            player.AddItem(new Pot_str("Potion de Force", 5));
+                            player.AddItem(new Pot_str("Potion de Force", 40));
                             break;
                         case 1:
-                            player.AddItem(new Pot_hp("Potion de Soin", 5));
+                            player.AddItem(new Pot_hp("Potion de Soin", 40));
                             break;
-                        case 2: 
-                            player.AddItem(new Pot_hpmax("Potion de Vie", 5));
+                        case 2:
+                            player.AddItem(new Pot_hpmax("Potion de Vie", 40));
                             break;
+                        case 3:
+                            player.AddItem(new Gold("Sac d'or", 5));
+                            break;
+                        case 4:
+                            player.AddItem(new Armor("Armure de base ", 40));
+                            break;
+                        case 5:
+                            player.AddItem(new Weapon("Arme de base ", 40));
+                            break;
+                        case 6:
+                            player.AddItem(new Armor("Armure légendaire", 50000));
+                            break;
+
                         default:
                             break;
                     }
@@ -136,6 +154,10 @@ namespace Project_Dungeon
         }
         static void Leave()
         {
+            Console.WriteLine("merci d'avoir joue a notre jeu : " +
+                "\n\rEtienne Javelle, " +
+                "\n\rLouis Duprat, " +
+                "\n\rRomain Dubar ");
             Console.WriteLine("\"quit\" to leave");
             do if (Console.ReadLine().ToLower().Contains("quit")) Environment.Exit(0);
             while (true);

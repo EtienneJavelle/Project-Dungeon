@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Project_Dungeon
 {
-    class Pot_hp : Item
+    class Gold : Item
     {
         #region Constructor
-        public Pot_hp(string name, int amount) : base(name, amount)
+        public Gold(string name, int amount) : base(name, amount)
         {
             this.isEquipment = false;
         }
@@ -17,13 +17,14 @@ namespace Project_Dungeon
         #region Overrides
         public override string ToString()
         {
-            return "Bonus de soin obtenu  +" + this.Amount;
+            return "Or obtenu  +" + this.Amount;
         }
 
         public override void effet(Player player)
         {
-            player.HealthPoint += this.Amount;
+            player.TotalGold += this.Amount;
             base.effet(player);
+
         }
 
         #endregion

@@ -13,7 +13,8 @@ namespace Project_Dungeon
         int _selectedItem = 0;
         public int TotalGold { get; set; }
 
-        
+
+
 
         public Player(int HealthPoint, int Strength) : base(HealthPoint, Strength)
         {
@@ -48,12 +49,13 @@ namespace Project_Dungeon
         public void Run()
         {
             Console.WriteLine("Fuit !");
+            this.TotalGold = TotalGold / 2;
             this.Position = this.LastPosition;
         }
 
         public override string ToString()
         {
-            return "Vous avez " + this.HealthPoint + " points de vie. Force " + this.Strength + ". Armure " + this.Armor + ".";
+            return "Vous avez " + this.HealthPoint + " points de vie. Force " + this.Strength + ". Armure " + this.Armor + ". Arme " + this.Weapon + ". Or " + this.TotalGold + ".";
         }
 
         public void Sleep()
@@ -100,19 +102,20 @@ namespace Project_Dungeon
                             break;
                         case ConsoleKey.Enter:
                             this.Inventory[this._selectedItem].effet(this);
-                            this.Inventory.RemoveAt(this._selectedItem);
+                            if (this.Inventory[this._selectedItem].isEquipment == false)
+                                this.Inventory.RemoveAt(this._selectedItem);
                             break;
                         default:
                             break;
                     }
                 }
-            } while (input!=ConsoleKey.Enter&&input!=ConsoleKey.Escape);
+            } while (input != ConsoleKey.Enter && input != ConsoleKey.Escape);
         }
 
         public void GainExp(int amount)
         {
             this.Experience += amount;
-            Console.WriteLine(amount+" experience gagnée");
+            Console.WriteLine(amount + " experience gagnée");
             Console.ReadKey();
             if (this.Experience >= this.Level * 20)
             {
@@ -128,11 +131,11 @@ namespace Project_Dungeon
 
             Console.WriteLine("Level UP !");
             Console.Write("Pv Max : ");
-            LevelUpStats(ref this.maxHP,rnd);
+            LevelUpStats(ref this.maxHP, rnd);
             Console.Write("Armure : ");
-            LevelUpStats(ref this.Armor,rnd);
+            LevelUpStats(ref this.Armor, rnd);
             Console.Write("Force : ");
-            LevelUpStats(ref this.Strength,rnd);
+            LevelUpStats(ref this.Strength, rnd);
 
             Console.ReadKey();
 

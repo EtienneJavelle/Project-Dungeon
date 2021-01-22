@@ -61,7 +61,9 @@ namespace Project_Dungeon
                 int temp = rand.Next(1, 2);
                 
                 if (temp == 1) ;// return previous room
-               // personnage.Bourse = personnage.Bourse / 2;
+
+                //player.position = player.lastPosition;
+               // player.Bourse = player.Bourse / 2;
             }
         }
 

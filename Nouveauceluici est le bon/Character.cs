@@ -14,6 +14,8 @@ namespace Project_Dungeon
         public string Name { get; protected set; }
         public int Strength;
         public int Armor;
+        public int Weapon { get; set; }
+
         #endregion
 
         #region Construct
@@ -30,8 +32,10 @@ namespace Project_Dungeon
         #region Methods
         public void LooseHealth(int amount)
         {
-            Console.WriteLine("Loose "+amount+" HP");
+            amount = Math.Max(amount, 0);
+            Console.WriteLine(this.Name + " => Loose " + amount + " HP");
             this.HealthPoint -= amount;
+
             if (this.HealthPoint <= 0) this.Die();
         }
 

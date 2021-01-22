@@ -16,8 +16,9 @@ namespace Project_Dungeon
             Console.Clear();
             this.player = player;
             this.enemy = enemy;
-            this.ExpToWin = enemy.exp;
-            do {
+            //this.ExpToWin = enemy.exp;
+            do
+            {
                 Console.WriteLine(this.player);
                 Console.WriteLine(this.enemy);
                 Console.WriteLine();
@@ -39,7 +40,7 @@ namespace Project_Dungeon
             if (this.enemy.Dead)
             {
                 this.Won = true;
-                this.player.GainExp(this.ExpToWin);
+                //this.player.GainExp(this.ExpToWin);
                 return false;
             }
             else EnemyTurn();
@@ -61,8 +62,9 @@ namespace Project_Dungeon
                 switch (Console.ReadKey().Key)
                 {
                     case ConsoleKey.D1:
-                        tmp = rand.Next(1, 10);
-                        this.enemy.LooseHealth((this.player.Strength - this.enemy.Armor) * tmp);
+                        tmp = rand.Next(1, 11);
+                        float value = ((float)tmp / 100);
+                        this.enemy.LooseHealth((int)MathF.Ceiling((this.player.Strength + this.player.Weapon - this.enemy.Armor) * (1 + value)));
                         return true;
                     case ConsoleKey.D2:
                         tmp = rand.Next(0, 2);
@@ -83,24 +85,7 @@ namespace Project_Dungeon
                         break;
                 }
             } while (true);
-        /*
-            if (choice == 1)
-            {
-                //enemy.pv = enemy.pv -(personnage.Force + personnage.Arme − enemy.Armure) ∗ temp;
 
-
-                // a deplacer 
-                //if (enemy.pv <=0 )
-                //{
-                //Room.Inventaire = enemy.Inventaire; 
-                //Player.exp += enemy.exp
-                // }
-            }
-            else
-            {
-                // personnage.Bourse = personnage.Bourse / 2;
-            }
-        */
         }
 
         public void EnemyTurn()
@@ -108,18 +93,10 @@ namespace Project_Dungeon
             Console.WriteLine("EnemyTour");
 
             var rand = new Random();
-            int tmp = rand.Next(1, 10);
-            this.player.LooseHealth((this.enemy.Strength - this.player.Armor) * tmp);
+            int tmp = rand.Next(1, 11);
+            float value = ((float)tmp / 100);
+            this.player.LooseHealth((int)MathF.Ceiling((this.enemy.Strength + this.enemy.Weapon - this.player.Armor) * (1 + value)));
 
-            //player.pv = player.pv -(enemy.Force + enemy.Arme − player.Armure) ∗ temp;
-
-
-            // a jouter dans la classe prncipale 
-            //while (i < 10)
-            //{
-            //    Combat.TurnCounter();
-            //    i += 1;
-            //}
         }
 
         public static implicit operator bool(Fight fight)
