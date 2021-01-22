@@ -9,7 +9,8 @@ namespace Project_Dungeon
         #region Variables
         public int HealthPoint { get; set; }
         public int Strength { get; set; }
-        public int Armor { get; }
+        public int Armor { get; set; }
+        public int Arme { get; set; } //destroy 
         public bool Dead { get; protected set; }
         #endregion
 

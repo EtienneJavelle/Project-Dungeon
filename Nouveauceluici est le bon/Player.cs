@@ -10,8 +10,9 @@ namespace Project_Dungeon
         public Vector2Int LastPosition;
         public int maxHP;
         public List<Item> Inventory { get; private set; }
-        int _selectedItem = 0;
-        
+        int _selectedItem = 0; 
+        public int TotalGold { get; set; }// a destroy
+
 
         public Player(int HealthPoint, int Strength) : base(HealthPoint, Strength)
         {
@@ -40,12 +41,13 @@ namespace Project_Dungeon
         public void Run()
         {
             Console.WriteLine("Fuit !");
+            this.TotalGold = TotalGold / 2;// destroy 
             this.Position = this.LastPosition;
         }
 
         public override string ToString()
         {
-            return "Vous avez " + this.HealthPoint + " points de vie.\r\nForce " + this.Strength + ".\r\nArmure " + this.Armor + ".";
+            return "Vous avez " + this.HealthPoint + " points de vie.\r\nForce " + this.Strength + ".\r\nArmure " + this.Armor  +".\r\nOr : " + this.TotalGold + ".";
         }
 
         public void Sleep()
@@ -91,6 +93,7 @@ namespace Project_Dungeon
                             break;
                         case ConsoleKey.Enter:
                             this.Inventory[this._selectedItem].effet(this);
+                            if (this.Inventory[this._selectedItem].isEquipment == false) //destroy 
                             this.Inventory.RemoveAt(this._selectedItem);
                             break;
                         default:
