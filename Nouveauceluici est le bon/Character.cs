@@ -8,10 +8,12 @@ namespace Project_Dungeon
     {
         #region Variables
         public int HealthPoint { get; set; }
-        public int Strength { get; set; }
-        public int Armor { get; set; }
-        public int Arme { get; set; } //destroy 
         public bool Dead { get; protected set; }
+        public int Level { get; protected set; }
+        public int Experience { get; protected set; }
+        public string Name { get; protected set; }
+        public int Strength;
+        public int Armor;
         #endregion
 
         #region Construct
@@ -21,6 +23,7 @@ namespace Project_Dungeon
             this.Strength = Strength;
             this.Armor = 0;
             this.Dead = false;
+            this.Level = 1;
         }
         #endregion
 
@@ -34,8 +37,9 @@ namespace Project_Dungeon
 
         void Die()
         {
-            Console.WriteLine("Dead");
+            Console.WriteLine(this.Name + "=> mort");
             this.Dead = true;
+            Console.ReadKey();
         }
         #endregion
     }

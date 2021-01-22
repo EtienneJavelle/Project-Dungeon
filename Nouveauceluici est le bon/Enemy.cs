@@ -6,16 +6,18 @@ namespace Project_Dungeon
 {
     class Enemy : Character
     {
-        int exp = 10;
+        public int exp { get; }
 
         public Enemy(int HealthPoint, int Strength) : base(HealthPoint, Strength)
         {
+            this.exp = 20;
+            this.Name = "Monstre ";
         }
 
 
         public override string ToString()
         {
-            return "Le Monstre a " + this.HealthPoint + " points de vie, Force " + this.Strength + " et Armure " + this.Armor + ".";
+            return this.Name+ "a " + this.HealthPoint + " points de vie, Force " + this.Strength + " et Armure " + this.Armor + ".";
         }
     }
 }
